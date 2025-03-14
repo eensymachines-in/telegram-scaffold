@@ -10,41 +10,7 @@ import (
 
 	"github.com/eensymachines.in/telegram-scaffold/models"
 	log "github.com/sirupsen/logrus"
-	"gorm.io/gorm"
 )
-
-type Finder interface {
-	FindDistributionIds(models.BotResponse) ([]int64, error)
-}
-
-var (
-	NewDBFinder = func(db *gorm.DB) Finder {
-		return &dbFinder{DB: db}
-	}
-)
-
-// dbFinder : distributor functions need agents that can find relevant chatids to fwd to
-// this one will, depending on the message category get the chatids for the botresponse from the DB connection
-type dbFinder struct {
-	*gorm.DB
-}
-
-func (df *dbFinder) FindDistributionIds(res models.BotResponse) ([]int64, error) {
-	chatIds := []int64{}
-	result := []*models.TelegGrp{}
-	catg := res.(models.CategorisedBotResponse).GetCategory()
-	tx := df.Model(&models.TelegGrp{}).Where("? = ANY(categories)", catg).Find(&result) // picking the correct set of groups from the database
-	if tx.Error != nil {
-		return chatIds, fmt.Errorf("❗failed to retrieve the groups, %s", tx.Error) //failed query to get groups
-	}
-	if len(result) == 0 {
-		return chatIds, fmt.Errorf("❗No relevant groups found for the category")
-	}
-	for _, grp := range result {
-		chatIds = append(chatIds, grp.ChatID)
-	}
-	return chatIds, nil
-}
 
 // MassFwdAsReceived is a function that forwards messages as received
 // ctx is the context that is used to cancel the function
