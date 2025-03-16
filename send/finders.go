@@ -8,7 +8,7 @@ The dbFinder struct implements the Finder interface and uses the gorm.DB connect
 import (
 	"fmt"
 
-	"github.com/eensymachines.in/telegram-scaffold/models"
+	"github.com/eensymachines-in/telegram-scaffold/models"
 	"gorm.io/gorm"
 )
 

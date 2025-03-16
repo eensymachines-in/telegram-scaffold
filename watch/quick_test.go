@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/eensymachines.in/telegram-scaffold/models"
-	"github.com/eensymachines.in/telegram-scaffold/send"
+	"github.com/eensymachines-in/telegram-scaffold/models"
+	"github.com/eensymachines-in/telegram-scaffold/send"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

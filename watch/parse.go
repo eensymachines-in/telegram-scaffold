@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/eensymachines.in/telegram-scaffold/models"
+	"github.com/eensymachines-in/telegram-scaffold/models"
 )
 
 // parsers are functions that can be extended on this delegate.

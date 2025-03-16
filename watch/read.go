@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/eensymachines.in/telegram-scaffold/models"
+	"github.com/eensymachines-in/telegram-scaffold/models"
 	log "github.com/sirupsen/logrus"
 )
 

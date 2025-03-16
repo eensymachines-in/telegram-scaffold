@@ -1,4 +1,4 @@
-module github.com/eensymachines.in/telegram-scaffold
+module github.com/eensymachines-in/telegram-scaffold
 
 go 1.23.6
 
